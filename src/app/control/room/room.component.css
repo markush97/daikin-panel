@@ -1,0 +1,16 @@
+.room-margin {
+  margin: 8px;
+}
+
+.room-card {
+  max-width: 400px;
+  text-align: center;
+}
+
+.margin-bottom {
+  margin-bottom: 10px;
+}
+
+.target-slider {
+  width: 250px;
+}

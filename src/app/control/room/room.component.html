@@ -1,0 +1,83 @@
+<mat-card class="room-card">
+  <mat-card-header>
+    <mat-card-title>{{info.name}}</mat-card-title>
+    <mat-card-subtitle>{{info.location}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+
+    <div class="margin-bottom">
+      <mat-button-toggle-group name="mode" value="Ausgeschalten" #modeGroup="matButtonToggleGroup">
+        <mat-button-toggle matTooltipPosition="above" value="3" matTooltip="Kühlen"><mat-icon>ac_unit</mat-icon></mat-button-toggle>
+        <mat-button-toggle matTooltipPosition="above" value="4" matTooltip="Heizen"><mat-icon>local_fire_department</mat-icon></mat-button-toggle>
+        <mat-button-toggle matTooltipPosition="above" value="6" matTooltip="Lüften"><mat-icon>toys</mat-icon></mat-button-toggle>
+        <mat-button-toggle matTooltipPosition="above" value="2" matTooltip="Entfeuchten"><mat-icon>invert_colors_off</mat-icon></mat-button-toggle>
+        <mat-button-toggle matTooltipPosition="above" value="0" matTooltip="Automatik"><mat-icon>brightness_auto</mat-icon></mat-button-toggle>
+        <mat-button-toggle matTooltipPosition="above" value="5" matTooltip="Ausschalten"><mat-icon>power_settings_new</mat-icon></mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+
+    <div class="margin-bottom">
+      <ngx-gauge type="arch"
+                [label]="modes[modeGroup.value]"
+                append="°C"
+                min="5"
+                max="45"
+                [value]="info.tempCurrent"
+                thick="12"
+                foregroundColor="rgba(255, 0, 0, 1)"
+                [thresholds]="thresholdConfig"
+                size="300"
+                >
+      </ngx-gauge>
+  </div>
+
+  <div class="margin-bottom">
+    Zieltemperatur:
+    <mat-slider
+      class="target-slider"
+      max="41"
+      min="10"
+      step="0.5"
+      thumbLabel="true"
+      [(value)]="info.tempTarget"
+    >
+  </mat-slider>
+  </div>
+
+  Lüfter:
+  <div class="margin-bottom">
+    <mat-button-toggle-group name="speed" #speed="matButtonToggleGroup">
+      <mat-button-toggle matTooltipPosition="above" value="A" matTooltip="Automatik"><mat-icon>brightness_auto</mat-icon></mat-button-toggle>
+      <mat-button-toggle matTooltipPosition="above" value="B" matTooltip="Leise"><mat-icon>hearing_disabled</mat-icon></mat-button-toggle>
+      <mat-button-toggle matTooltipPosition="above" value="3" matTooltip="Level 1"><mat-icon>looks_one</mat-icon></mat-button-toggle>
+      <mat-button-toggle matTooltipPosition="above" value="4" matTooltip="Level 2"><mat-icon>looks_two</mat-icon></mat-button-toggle>
+      <mat-button-toggle matTooltipPosition="above" value="5" matTooltip="Level 3"><mat-icon>looks_3</mat-icon></mat-button-toggle>
+      <mat-button-toggle matTooltipPosition="above" value="6" matTooltip="Level 4"><mat-icon>looks_4</mat-icon></mat-button-toggle>
+      <mat-button-toggle matTooltipPosition="above" value="7" matTooltip="Level 5"><mat-icon>looks_5</mat-icon></mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <div class="margin-bottom">
+    <p>
+    Urlaubsmodus:
+      <mat-button-toggle-group name="holiday" #holiday="matButtonToggleGroup">
+        <mat-button-toggle value="1">Ein</mat-button-toggle>
+        <mat-button-toggle value="0">Aus</mat-button-toggle>
+      </mat-button-toggle-group>
+    </p>
+  </div>
+
+  <div class="margin-bottom">
+    <p>
+    Richtung:
+      <mat-button-toggle-group name="direction" #direction="matButtonToggleGroup">
+        <mat-button-toggle matTooltipPosition="above" value="0" matTooltip="Stop"><mat-icon>power_settings_new</mat-icon></mat-button-toggle>
+        <mat-button-toggle matTooltipPosition="above" value="1" matTooltip="Vertikal"><mat-icon>swap_vert</mat-icon></mat-button-toggle>
+        <mat-button-toggle matTooltipPosition="above" value="2" matTooltip="Horizental"><mat-icon>swap_horiz</mat-icon></mat-button-toggle>
+        <mat-button-toggle matTooltipPosition="above" value="3" matTooltip="Beides"><mat-icon>open_with</mat-icon></mat-button-toggle>
+      </mat-button-toggle-group>
+    </p>
+  </div>
+
+  </mat-card-content>
+</mat-card>

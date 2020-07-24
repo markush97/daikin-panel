@@ -1,0 +1,5 @@
+<h1>Steuerung:</h1>
+
+<mat-grid-list cols="4" rowHeight="700px" class="grid-container" #roomGrid>
+  <mat-grid-tile *ngFor="let roomInfo of roomInfos"><app-room  [roomInfo]="roomInfo"></app-room></mat-grid-tile>
+</mat-grid-list>
